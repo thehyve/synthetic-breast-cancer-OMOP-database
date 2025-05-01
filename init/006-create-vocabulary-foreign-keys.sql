@@ -5,21 +5,24 @@ ALTER TABLE omopcdm_synthetic.CONCEPT ADD CONSTRAINT fpk_CONCEPT_concept_class_i
 ALTER TABLE omopcdm_synthetic.VOCABULARY ADD CONSTRAINT fpk_VOCABULARY_vocabulary_concept_id FOREIGN KEY (vocabulary_concept_id) REFERENCES omopcdm_synthetic.CONCEPT (CONCEPT_ID);
 ALTER TABLE omopcdm_synthetic.DOMAIN ADD CONSTRAINT fpk_DOMAIN_domain_concept_id FOREIGN KEY (domain_concept_id) REFERENCES omopcdm_synthetic.CONCEPT (CONCEPT_ID);
 ALTER TABLE omopcdm_synthetic.CONCEPT_CLASS ADD CONSTRAINT fpk_CONCEPT_CLASS_concept_class_concept_id FOREIGN KEY (concept_class_concept_id) REFERENCES omopcdm_synthetic.CONCEPT (CONCEPT_ID);
-ALTER TABLE omopcdm_synthetic.CONCEPT_RELATIONSHIP ADD CONSTRAINT fpk_CONCEPT_RELATIONSHIP_concept_id_1 FOREIGN KEY (concept_id_1) REFERENCES omopcdm_synthetic.CONCEPT (CONCEPT_ID);
-ALTER TABLE omopcdm_synthetic.CONCEPT_RELATIONSHIP ADD CONSTRAINT fpk_CONCEPT_RELATIONSHIP_concept_id_2 FOREIGN KEY (concept_id_2) REFERENCES omopcdm_synthetic.CONCEPT (CONCEPT_ID);
-ALTER TABLE omopcdm_synthetic.CONCEPT_RELATIONSHIP ADD CONSTRAINT fpk_CONCEPT_RELATIONSHIP_relationship_id FOREIGN KEY (relationship_id) REFERENCES omopcdm_synthetic.RELATIONSHIP (RELATIONSHIP_ID);
-ALTER TABLE omopcdm_synthetic.RELATIONSHIP ADD CONSTRAINT fpk_RELATIONSHIP_relationship_concept_id FOREIGN KEY (relationship_concept_id) REFERENCES omopcdm_synthetic.CONCEPT (CONCEPT_ID);
-ALTER TABLE omopcdm_synthetic.CONCEPT_SYNONYM ADD CONSTRAINT fpk_CONCEPT_SYNONYM_concept_id FOREIGN KEY (concept_id) REFERENCES omopcdm_synthetic.CONCEPT (CONCEPT_ID);
-ALTER TABLE omopcdm_synthetic.CONCEPT_SYNONYM ADD CONSTRAINT fpk_CONCEPT_SYNONYM_language_concept_id FOREIGN KEY (language_concept_id) REFERENCES omopcdm_synthetic.CONCEPT (CONCEPT_ID);
-ALTER TABLE omopcdm_synthetic.CONCEPT_ANCESTOR ADD CONSTRAINT fpk_CONCEPT_ANCESTOR_ancestor_concept_id FOREIGN KEY (ancestor_concept_id) REFERENCES omopcdm_synthetic.CONCEPT (CONCEPT_ID);
-ALTER TABLE omopcdm_synthetic.CONCEPT_ANCESTOR ADD CONSTRAINT fpk_CONCEPT_ANCESTOR_descendant_concept_id FOREIGN KEY (descendant_concept_id) REFERENCES omopcdm_synthetic.CONCEPT (CONCEPT_ID);
-ALTER TABLE omopcdm_synthetic.DRUG_STRENGTH ADD CONSTRAINT fpk_DRUG_STRENGTH_drug_concept_id FOREIGN KEY (drug_concept_id) REFERENCES omopcdm_synthetic.CONCEPT (CONCEPT_ID);
-ALTER TABLE omopcdm_synthetic.DRUG_STRENGTH ADD CONSTRAINT fpk_DRUG_STRENGTH_ingredient_concept_id FOREIGN KEY (ingredient_concept_id) REFERENCES omopcdm_synthetic.CONCEPT (CONCEPT_ID);
-ALTER TABLE omopcdm_synthetic.DRUG_STRENGTH ADD CONSTRAINT fpk_DRUG_STRENGTH_amount_unit_concept_id FOREIGN KEY (amount_unit_concept_id) REFERENCES omopcdm_synthetic.CONCEPT (CONCEPT_ID);
-ALTER TABLE omopcdm_synthetic.DRUG_STRENGTH ADD CONSTRAINT fpk_DRUG_STRENGTH_numerator_unit_concept_id FOREIGN KEY (numerator_unit_concept_id) REFERENCES omopcdm_synthetic.CONCEPT (CONCEPT_ID);
-ALTER TABLE omopcdm_synthetic.DRUG_STRENGTH ADD CONSTRAINT fpk_DRUG_STRENGTH_denominator_unit_concept_id FOREIGN KEY (denominator_unit_concept_id) REFERENCES omopcdm_synthetic.CONCEPT (CONCEPT_ID);
-ALTER TABLE omopcdm_synthetic.COHORT_DEFINITION ADD CONSTRAINT fpk_COHORT_DEFINITION_definition_type_concept_id FOREIGN KEY (definition_type_concept_id) REFERENCES omopcdm_synthetic.CONCEPT (CONCEPT_ID);
-ALTER TABLE omopcdm_synthetic.COHORT_DEFINITION ADD CONSTRAINT fpk_COHORT_DEFINITION_subject_concept_id FOREIGN KEY (subject_concept_id) REFERENCES omopcdm_synthetic.CONCEPT (CONCEPT_ID);
+-- begin change by Jan Blom
+-- One or more of the constraints below cause errors. In order to get ahead with the local test environment for Vantage6 they have been disabled for now
+-- ALTER TABLE omopcdm_synthetic.CONCEPT_RELATIONSHIP ADD CONSTRAINT fpk_CONCEPT_RELATIONSHIP_concept_id_1 FOREIGN KEY (concept_id_1) REFERENCES omopcdm_synthetic.CONCEPT (CONCEPT_ID);
+-- ALTER TABLE omopcdm_synthetic.CONCEPT_RELATIONSHIP ADD CONSTRAINT fpk_CONCEPT_RELATIONSHIP_concept_id_2 FOREIGN KEY (concept_id_2) REFERENCES omopcdm_synthetic.CONCEPT (CONCEPT_ID);
+-- ALTER TABLE omopcdm_synthetic.CONCEPT_RELATIONSHIP ADD CONSTRAINT fpk_CONCEPT_RELATIONSHIP_relationship_id FOREIGN KEY (relationship_id) REFERENCES omopcdm_synthetic.RELATIONSHIP (RELATIONSHIP_ID);
+-- ALTER TABLE omopcdm_synthetic.RELATIONSHIP ADD CONSTRAINT fpk_RELATIONSHIP_relationship_concept_id FOREIGN KEY (relationship_concept_id) REFERENCES omopcdm_synthetic.CONCEPT (CONCEPT_ID);
+-- ALTER TABLE omopcdm_synthetic.CONCEPT_SYNONYM ADD CONSTRAINT fpk_CONCEPT_SYNONYM_concept_id FOREIGN KEY (concept_id) REFERENCES omopcdm_synthetic.CONCEPT (CONCEPT_ID);
+-- ALTER TABLE omopcdm_synthetic.CONCEPT_SYNONYM ADD CONSTRAINT fpk_CONCEPT_SYNONYM_language_concept_id FOREIGN KEY (language_concept_id) REFERENCES omopcdm_synthetic.CONCEPT (CONCEPT_ID);
+-- ALTER TABLE omopcdm_synthetic.CONCEPT_ANCESTOR ADD CONSTRAINT fpk_CONCEPT_ANCESTOR_ancestor_concept_id FOREIGN KEY (ancestor_concept_id) REFERENCES omopcdm_synthetic.CONCEPT (CONCEPT_ID);
+-- ALTER TABLE omopcdm_synthetic.CONCEPT_ANCESTOR ADD CONSTRAINT fpk_CONCEPT_ANCESTOR_descendant_concept_id FOREIGN KEY (descendant_concept_id) REFERENCES omopcdm_synthetic.CONCEPT (CONCEPT_ID);
+-- ALTER TABLE omopcdm_synthetic.DRUG_STRENGTH ADD CONSTRAINT fpk_DRUG_STRENGTH_drug_concept_id FOREIGN KEY (drug_concept_id) REFERENCES omopcdm_synthetic.CONCEPT (CONCEPT_ID);
+-- ALTER TABLE omopcdm_synthetic.DRUG_STRENGTH ADD CONSTRAINT fpk_DRUG_STRENGTH_ingredient_concept_id FOREIGN KEY (ingredient_concept_id) REFERENCES omopcdm_synthetic.CONCEPT (CONCEPT_ID);
+-- ALTER TABLE omopcdm_synthetic.DRUG_STRENGTH ADD CONSTRAINT fpk_DRUG_STRENGTH_amount_unit_concept_id FOREIGN KEY (amount_unit_concept_id) REFERENCES omopcdm_synthetic.CONCEPT (CONCEPT_ID);
+-- ALTER TABLE omopcdm_synthetic.DRUG_STRENGTH ADD CONSTRAINT fpk_DRUG_STRENGTH_numerator_unit_concept_id FOREIGN KEY (numerator_unit_concept_id) REFERENCES omopcdm_synthetic.CONCEPT (CONCEPT_ID);
+-- ALTER TABLE omopcdm_synthetic.DRUG_STRENGTH ADD CONSTRAINT fpk_DRUG_STRENGTH_denominator_unit_concept_id FOREIGN KEY (denominator_unit_concept_id) REFERENCES omopcdm_synthetic.CONCEPT (CONCEPT_ID);
+-- ALTER TABLE omopcdm_synthetic.COHORT_DEFINITION ADD CONSTRAINT fpk_COHORT_DEFINITION_definition_type_concept_id FOREIGN KEY (definition_type_concept_id) REFERENCES omopcdm_synthetic.CONCEPT (CONCEPT_ID);
+-- ALTER TABLE omopcdm_synthetic.COHORT_DEFINITION ADD CONSTRAINT fpk_COHORT_DEFINITION_subject_concept_id FOREIGN KEY (subject_concept_id) REFERENCES omopcdm_synthetic.CONCEPT (CONCEPT_ID);
+-- end change by Jan Blom
 --ALTER TABLE omopcdm_synthetic.COHORT_DEFINITION ADD CONSTRAINT fpk_COHORT_DEFINITION_cohort_definition_id FOREIGN KEY (cohort_definition_id) REFERENCES omopcdm_synthetic.COHORT (COHORT_DEFINITION_ID);
 
 -- Check whether all the foreign keys were generated (this should be 21 for vocabulary only)
