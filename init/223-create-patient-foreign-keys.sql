@@ -183,4 +183,6 @@ END;
 $$
 LANGUAGE 'plpgsql';
 
-SELECT count_fkeys ()
+SELECT count_fkeys ();
+
+SELECT COUNT(*) from omopcdm_synthetic.person;
